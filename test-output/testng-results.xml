@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="29985" started-at="2018-04-27T13:50:23Z" finished-at="2018-04-27T13:50:53Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="29985" started-at="2018-04-27T13:50:23Z" finished-at="2018-04-27T13:50:53Z">
+      <class name="com.test.automation.uiAutomation.Test.TestController">
+        <test-method status="PASS" signature="initBrowser()[pri:0, instance:com.test.automation.uiAutomation.Test.TestController@6a41eaa2]" name="initBrowser" is-config="true" duration-ms="1257" started-at="2018-04-27T09:50:23Z" finished-at="2018-04-27T09:50:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initBrowser -->
+        <test-method status="FAIL" signature="TestCaseController()[pri:0, instance:com.test.automation.uiAutomation.Test.TestController@6a41eaa2]" name="TestCaseController" duration-ms="27608" started-at="2018-04-27T09:50:25Z" finished-at="2018-04-27T09:50:52Z">
+          <exception class="java.lang.NoSuchMethodException">
+            <message>
+              <![CDATA[com.test.automation.uiAutomation.Test.Keywords.()]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NoSuchMethodException: com.test.automation.uiAutomation.Test.Keywords.()
+	at java.lang.Class.getMethod(Unknown Source)
+	at com.test.automation.uiAutomation.Test.TestController.TestCaseController(TestController.java:86)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:375)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:340)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:289)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1226)
+	at org.testng.TestNG.runSuites(TestNG.java:1144)
+	at org.testng.TestNG.run(TestNG.java:1115)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NoSuchMethodException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TestCaseController -->
+        <test-method status="PASS" signature="quitBrowser()[pri:0, instance:com.test.automation.uiAutomation.Test.TestController@6a41eaa2]" name="quitBrowser" is-config="true" duration-ms="1092" started-at="2018-04-27T09:50:52Z" finished-at="2018-04-27T09:50:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quitBrowser -->
+      </class> <!-- com.test.automation.uiAutomation.Test.TestController -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
