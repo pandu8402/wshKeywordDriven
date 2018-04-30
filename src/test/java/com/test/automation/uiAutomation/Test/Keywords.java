@@ -15,7 +15,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.test.automation.uiAutomation.Utils.Resources;
-//import com.companyname.projectname.uiActions.RegistrationPage;
+import com.test.automation.uiAutomation.uiActions.TopLevelMenu;
+
 import com.google.common.base.Function;
 
 public class Keywords extends Resources{
@@ -185,7 +186,6 @@ public class Keywords extends Resources{
 		element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 		element.click();
 		return "Pass";
-
 	}
 
 

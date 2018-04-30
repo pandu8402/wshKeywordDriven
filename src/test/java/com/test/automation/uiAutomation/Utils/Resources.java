@@ -44,9 +44,9 @@ public class Resources {
 		FI = new FileInputStream(f);
 		Repository.load(FI);
 		
-		/*f = new File(System.getProperty("user.dir")+"//src//test//java//com//test//automation//uiAutomation//repository//creatAnAccount.properties");
+	    f = new File(System.getProperty("user.dir")+"//src//test//java//com//test//automation//uiAutomation//repository//OR.properties");
 		FI = new FileInputStream(f);
-		Repository.load(FI);*/
+		Repository.load(FI);
 		
 	}	
 }
