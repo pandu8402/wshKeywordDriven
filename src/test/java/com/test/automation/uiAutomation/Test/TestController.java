@@ -38,10 +38,7 @@ public class TestController extends Resources{
 		String TCStatus="Pass";
 		
 		// loop through the test cases
-		for(int TC=2;TC<=SuiteData.getRowCount("TestCases");TC++) {
-			
-			
-			
+		for(int TC=2;TC<=SuiteData.getRowCount("TestCases");TC++) {			
 			String TestCaseID = SuiteData.getCellData("TestCases", "TCID", TC);
 			String RunMode = SuiteData.getCellData("TestCases", "RunMode", TC);
 			
@@ -94,6 +91,7 @@ public class TestController extends Resources{
 							TCStatus=TSStatus;
 							// report error
 							ReportUtil.addKeyword(Description, keyword, TSStatus, "Screenshot/"+filename+".jpg");
+							
 
 							if(ProceedOnFail.equals("N")) {
 								break;
@@ -110,12 +108,14 @@ public class TestController extends Resources{
 						
 					}
 					ReportUtil.addTestCase(TestCaseID, startTime, TestUtils.now("dd.MMMM.yyyy hh.mm.ss aaa"), TCStatus);
-					driver.quit();
+					//if (driver!=null)
+					    driver.quit();
 				}
 			}else {
 				// skip the test case
 				ReportUtil.addTestCase(TestCaseID, startTime, TestUtils.now("dd.MMMM.yyyy hh.mm.ss aaa"), "Skipped");
-				driver.quit();
+				if (driver!=null)
+				    driver.quit();
 			}
 		}
 
@@ -128,7 +128,8 @@ public class TestController extends Resources{
 	@AfterClass
 	public void quitBrowser() {
 		System.out.println("In quitBrowser---------------------------");
-		driver.quit();
+		if (driver!=null)
+		    driver.quit();
 	}
 	
 	

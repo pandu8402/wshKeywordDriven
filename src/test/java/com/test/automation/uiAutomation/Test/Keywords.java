@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -67,6 +68,8 @@ public class Keywords extends Resources{
 		try {
 			String ActualText= getWebElement(webElement).getText();
 			System.out.println(ActualText);
+			System.out.println("Actual text length =" + ActualText.length());
+			System.out.println("TestData text length =" + TestData.length());
 			if(!ActualText.equals(TestData)) {
 				return "Failed - Actual text "+ActualText+" is not equal to to expected text "+TestData;
 			}
@@ -90,6 +93,20 @@ public class Keywords extends Resources{
 	}
 	
 	
+	
+ public static String HoverOn(){
+	 System.out.println("Hover on is called");
+		try{
+			Actions action = new Actions(driver);
+			action.moveToElement(getWebElement(webElement)).build().perform();
+		}catch(Throwable t){
+			t.printStackTrace();
+			return "Failed - Element not found "+webElement;
+		}
+		return "Pass";
+	}
+
+
    /**
     * This Method will return web element.
     * @param locator
@@ -219,6 +236,8 @@ public class Keywords extends Resources{
 		RegistrationPage reg = new RegistrationPage();
 		return reg.selectYourAddressCountry();
 	}*/
+	
+	
 	
 	public static void closeBrowser(){
 		driver.quit();

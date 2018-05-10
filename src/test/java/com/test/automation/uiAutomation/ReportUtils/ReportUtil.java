@@ -217,8 +217,9 @@ public class ReportUtil {
 						// out.write("<td align=center width=20%><FONT
 						// COLOR=#153E7E FACE=Arial
 						// SIZE=1><b>"+teststatus.get(i)+"</b></td>");
-						if (screenShotPath.get(i) != null)
-							out.write("<td align=center width=20%><FONT COLOR=#153E7E FACE=Arial SIZE=1><b><a href=" + screenShotPath.get(i) + " target=_blank>Screen Shot</a></b></td>");
+						if (screenShotPath.get(i) != null)							
+							out.write("<td align=center width=20%><FONT COLOR=#153E7E FACE=Arial SIZE=1><b><a href=" + System.getProperty("user.dir")+"/src/test/java/com/test/automation/uiAutomation/" + screenShotPath.get(i) + " target=_blank>Screen Shot</a></b></td>");
+							//out.write("<td align=center width=20%><FONT COLOR=#153E7E FACE=Arial SIZE=1><b><a href=" + screenShotPath.get(i) + " target=_blank>Screen Shot</a></b></td>");
 						else
 							out.write("<td align=center width=20%><FONT COLOR=#153E7E FACE=Arial SIZE=1><b>&nbsp;</b></td>");
 						out.write("</tr>");

@@ -48,5 +48,8 @@ public class Resources {
 		FI = new FileInputStream(f);
 		Repository.load(FI);
 		
+		f = new File(System.getProperty("user.dir")+"//src//test//java//com//test//automation//uiAutomation//Config//Config.properties");
+		FI = new FileInputStream(f);
+		Config.load(FI);
 	}	
 }

@@ -23,6 +23,4 @@ public class TestUtils extends Resources{
 		SimpleDateFormat fm = new SimpleDateFormat();
 		return fm.format(cal.getTime());
 	}
-	
-	
 }
