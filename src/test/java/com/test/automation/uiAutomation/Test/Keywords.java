@@ -16,11 +16,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.test.automation.uiAutomation.Utils.Resources;
-import com.test.automation.uiAutomation.uiActions.TopLevelMenu;
 
 import com.google.common.base.Function;
 
 public class Keywords extends Resources{
+	
 	
 	public static String Navigate() {
 		System.out.println("Navigate is called");
@@ -91,7 +91,6 @@ public class Keywords extends Resources{
 		}
 		return "Pass";
 	}
-	
 	
 	
  public static String HoverOn(){
@@ -171,6 +170,7 @@ public class Keywords extends Resources{
 			throw new Exception("Unknown locator type '" + locatorType + "'");
 	}
 	
+	
 	public static WebElement getWebElement(String locator) throws Exception{
 		System.out.println("locator data:-"+locator+"is---"+Repository.getProperty(locator));
 		return getLocator(Repository.getProperty(locator));
@@ -182,7 +182,11 @@ public class Keywords extends Resources{
 	
 	public static String expliciteWait() throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.visibilityOf(getWebElement(webElement)));
+		try{
+			wait.until(ExpectedConditions.visibilityOf(getWebElement(webElement)));	
+		}catch(Throwable t){
+			return "Failed - Element not found "+webElement;
+		}		
 		return "Pass";
 	}
 	
@@ -237,7 +241,49 @@ public class Keywords extends Resources{
 		return reg.selectYourAddressCountry();
 	}*/
 	
+	public static String clickfilterIcon()
+	{
+	   try{
+		   getWebElement(webElement).findElement(By.xpath("FilterIcon")).click();
+	   }catch(Throwable t){
+		   return "Failed - Element not found "+webElement;
+	   }
+	   return "Pass";
+	}
 	
+	
+	public static String clickfilterDropDown()
+	{
+	   try{
+		   getWebElement(webElement).findElement(By.xpath("FilterIcon")).click();
+	   }catch(Throwable t){
+		   return "Failed - Element not found "+webElement;
+	   }
+	   return "Pass";
+	}
+	
+	
+	public static String selectFromDropDown(String filtervalue)
+	{
+		WebElement widget;
+		List<WebElement> filteritems;
+		
+		try
+		{
+		 filteritems = getWebElements("ListItems");  
+		  for(WebElement item : filteritems)
+		  {
+			  if(item.getText().contains(filtervalue))
+			  {
+				  item.click();
+				  break;
+			  }	  
+		  }
+		}catch(Throwable t){
+			return "Failed - Element not found "+webElement;
+		}
+		return "Pass";
+	}
 	
 	public static void closeBrowser(){
 		driver.quit();

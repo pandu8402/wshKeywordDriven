@@ -43,6 +43,7 @@ public class TestController extends Resources{
 			String RunMode = SuiteData.getCellData("TestCases", "RunMode", TC);
 			
 			if(RunMode.equals("Y")) {
+				TCStatus="Pass";
 				String TSStatus="Pass";
 				
 				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//drivers//chromedriver_v2-37.exe");
@@ -75,17 +76,14 @@ public class TestController extends Resources{
 						
 						TestData = TestStepData.getCellData(TestCaseID, TestDataField, TD);	
 						
-						if(TestDataField.equals("email")){
-							TestData = "test"+System.currentTimeMillis()+"@gmail.com";
-						}
-						
-						
+												
 						Method method = Keywords.class.getMethod(keyword);	
 						TSStatus = (String) method.invoke(method);
 						
 						if(TSStatus.contains("Failed")) {
 							// take the screenshot
-							String filename = TestCaseID+"["+(TD-1)+"]"+TSID+"["+TestData+"]";
+							//String filename = TestCaseID+"["+(TD-1)+"]"+TSID+"["+TestData+"]";
+							String filename = TestCaseID+"["+(TD-1)+"]"+TSID;
 							TestUtils.getScreenShot(filename);
 							
 							TCStatus=TSStatus;
