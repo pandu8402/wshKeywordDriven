@@ -46,11 +46,7 @@ public class TestController extends Resources{
 				TCStatus="Pass";
 				String TSStatus="Pass";
 				
-				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//drivers//chromedriver_v2-37.exe");
-				driver = new ChromeDriver();
-				//driver = new EventFiringWebDriver(dr);
-				driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-				driver.manage().window().maximize();
+				
 				
 				int rows = TestStepData.getRowCount(TestCaseID);
 				if(rows<2) { 
@@ -62,6 +58,12 @@ public class TestController extends Resources{
 				
 					// loop through the test steps
 					System.out.println("SuiteData.getRowCount(TestCaseID)"+SuiteData.getRowCount(TestCaseID));
+					
+					System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//drivers//chromedriver_v2-37.exe");
+					driver = new ChromeDriver();
+					//driver = new EventFiringWebDriver(dr);
+					driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+					driver.manage().window().maximize();
 					
 					for(int TS=2;TS<=SuiteData.getRowCount(TestCaseID);TS++) {
 						

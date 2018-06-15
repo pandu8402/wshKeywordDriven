@@ -137,7 +137,7 @@ public class Keywords extends Resources{
 			return driver.findElement(By.cssSelector(locatorValue));
 		else if (locatorType.toLowerCase().equals("xpath"))
 			return driver.findElement(By.xpath(locatorValue));
-		else
+		else 
 			throw new Exception("Unknown locator type '" + locatorType + "'");
 	}
 	
@@ -190,20 +190,10 @@ public class Keywords extends Resources{
 		return "Pass";
 	}
 	
-	/*
-	public static String expliciteWait(){
-     try {
-		Thread.sleep(5000);
-	} catch (InterruptedException e) {
-		return "Failed - unable to load the page";
-	}
-     return "Pass";
-	}
-	*/
-	
-	public static String clickWhenReady(By locator, int timeout) {
+		
+	public static String clickWhenReady(By locator) {
 		WebElement element = null;
-		WebDriverWait wait = new WebDriverWait(driver, timeout);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
 		element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 		element.click();
 		return "Pass";
@@ -220,70 +210,23 @@ public class Keywords extends Resources{
 		return "Pass";
 	}
 	
-	/*public static String selectDaysInDropDown() throws Exception{
-		RegistrationPage reg = new RegistrationPage();
-		String status = reg.selectDaysInDropDown();
-		return status;
-	}
 	
-	public static String selectMonthInDropDown() throws Exception{
-		RegistrationPage reg = new RegistrationPage();
-		return reg.selectMonthInDropDown();
-	}
-	
-	public static String selectYearInDropDown() throws Exception{
-		RegistrationPage reg = new RegistrationPage();
-		return reg.selectYearInDropDown();
-	}
-	
-	public static String selectYourAddressCountry() throws Exception{
-		RegistrationPage reg = new RegistrationPage();
-		return reg.selectYourAddressCountry();
-	}*/
-	
-	public static String clickfilterIcon()
-	{
-	   try{
-		   getWebElement(webElement).findElement(By.xpath("FilterIcon")).click();
-	   }catch(Throwable t){
-		   return "Failed - Element not found "+webElement;
-	   }
-	   return "Pass";
-	}
-	
-	
-	public static String clickfilterDropDown()
-	{
-	   try{
-		   getWebElement(webElement).findElement(By.xpath("FilterIcon")).click();
-	   }catch(Throwable t){
-		   return "Failed - Element not found "+webElement;
-	   }
-	   return "Pass";
-	}
-	
-	
-	public static String selectFromDropDown(String filtervalue)
-	{
-		WebElement widget;
-		List<WebElement> filteritems;
-		
-		try
-		{
-		 filteritems = getWebElements("ListItems");  
-		  for(WebElement item : filteritems)
-		  {
-			  if(item.getText().contains(filtervalue))
-			  {
-				  item.click();
-				  break;
-			  }	  
-		  }
-		}catch(Throwable t){
+	public static String runAs() {
+		System.out.println("Select Drop Down Item ="+ TestData);
+		try {
+			List<WebElement> items = getWebElements(webElement);
+			for(WebElement item : items)
+			{
+				if(item.getText().contains(TestData))
+					item.click();
+			}
+		}catch (Throwable t) {
+			t.printStackTrace();
 			return "Failed - Element not found "+webElement;
 		}
 		return "Pass";
 	}
+	
 	
 	public static void closeBrowser(){
 		driver.quit();

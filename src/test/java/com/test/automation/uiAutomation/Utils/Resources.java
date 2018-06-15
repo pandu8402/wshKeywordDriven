@@ -36,8 +36,12 @@ public class Resources {
 	
 	public static void Initialize() throws IOException {
 		
-		TestStepData = new Xls_Reader(System.getProperty("user.dir")+"//src//test//java//com//test//automation//uiAutomation//Data//TestSuite1Data.xlsx");
-		SuiteData = new Xls_Reader(System.getProperty("user.dir")+"//src//test//java//com//test//automation//uiAutomation//Data//TestSuite1.xlsx");
+		f = new File(System.getProperty("user.dir")+"//src//test//java//com//test//automation//uiAutomation//Config//Config.properties");
+		FI = new FileInputStream(f);
+		Config.load(FI);
+				
+		TestStepData = new Xls_Reader(System.getProperty("user.dir")+"//Customers//"+Config.getProperty("Customer")+"//TestSuite1Data.xlsx");
+		SuiteData = new Xls_Reader(System.getProperty("user.dir")+"//Customers//"+Config.getProperty("Customer")+"//TestSuite1.xlsx");
 		System.out.println(System.getProperty("user.dir"));
 		
 		f = new File(System.getProperty("user.dir")+"//src//test//java//com//test//automation//uiAutomation//repository//login.properties");
@@ -47,9 +51,5 @@ public class Resources {
 	    f = new File(System.getProperty("user.dir")+"//src//test//java//com//test//automation//uiAutomation//repository//OR.properties");
 		FI = new FileInputStream(f);
 		Repository.load(FI);
-		
-		f = new File(System.getProperty("user.dir")+"//src//test//java//com//test//automation//uiAutomation//Config//Config.properties");
-		FI = new FileInputStream(f);
-		Config.load(FI);
 	}	
 }

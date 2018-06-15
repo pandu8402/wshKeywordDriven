@@ -79,30 +79,6 @@ public class ReportUtil {
 
 			out.write("</table>\n");
 
-			/*
-			 * out.write("<table border=0 cellspacing=0 cellpadding=0 ><tr>");
-			 * 
-			 * out.write("<td><FONT COLOR= #000066  FACE= Arial  SIZE=2.75><b>"
-			 * +""+"</b></td>"); out.write("GRAPH");
-			 * 
-			 * out.write("</tr></table>");
-			 * 
-			 * out.write(
-			 * "<h4> <FONT COLOR=660000 FACE= Arial  SIZE=4.5> Detailed Report :</h4>"
-			 * ); out.write("<table  border=1 cellspacing=1 cellpadding=1 >");
-			 * out.write("<tr>"); out.write(
-			 * "<td width=80  align= center  bgcolor=#153E7E><FONT COLOR=#E0E0E0 FACE= Arial  SIZE=2><b>Test Script#</b></td>"
-			 * );
-			 * 
-			 * out.write(
-			 * "<td width=300 align= center  bgcolor=#153E7E><FONT COLOR=#E0E0E0 FACE= Arial  SIZE=2><b>Test Case Name</b></td>"
-			 * ); out.write(
-			 * "<td width=75 align= center  bgcolor=#153E7E><FONT COLOR=#E0E0E0 FACE= Arial  SIZE=2><b>Status</b></td>"
-			 * ); out.write(
-			 * "<td width=200 align= center  bgcolor=#153E7E><FONT COLOR=#E0E0E0 FACE= Arial  SIZE=2><b>Run End Time</b></td>"
-			 * ); out.write("</tr>");
-			 */
-			// Close the output stream
 			out.close();
 		} catch (Exception e) {// Catch exception if any
 			System.err.println("Error: " + e.getMessage());
@@ -120,13 +96,7 @@ public class ReportUtil {
 		currentSuiteName = suiteName.replaceAll(" ", "_");
 		tcid = 1;
 		try {
-			// build the suite folder
-			// currentSuitePath = currentDir; //+"//"+suiteName.replaceAll("
-			// ","_");
-			// currentSuiteDir = suiteName.replaceAll(" ","_");
-			// File f = new File(currentSuitePath);
-			// f.mkdirs();
-
+			
 			fstream = new FileWriter(indexResultFilename, true);
 			out = new BufferedWriter(fstream);
 
@@ -214,9 +184,6 @@ public class ReportUtil {
 						else if (teststatus.get(i).startsWith("Fail"))
 							out.write("<td width=20% align= center  bgcolor=Red><FONT COLOR=#153E7E FACE= Arial  SIZE=2><b>" + teststatus.get(i) + "</b></td>\n");
 
-						// out.write("<td align=center width=20%><FONT
-						// COLOR=#153E7E FACE=Arial
-						// SIZE=1><b>"+teststatus.get(i)+"</b></td>");
 						if (screenShotPath.get(i) != null)							
 							out.write("<td align=center width=20%><FONT COLOR=#153E7E FACE=Arial SIZE=1><b><a href=" + System.getProperty("user.dir")+"/src/test/java/com/test/automation/uiAutomation/" + screenShotPath.get(i) + " target=_blank>Screen Shot</a></b></td>");
 							//out.write("<td align=center width=20%><FONT COLOR=#153E7E FACE=Arial SIZE=1><b><a href=" + screenShotPath.get(i) + " target=_blank>Screen Shot</a></b></td>");
