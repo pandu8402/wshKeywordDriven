@@ -12,9 +12,11 @@ import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -47,7 +49,6 @@ public class TestController extends Resources{
 				String TSStatus="Pass";
 				
 				
-				
 				int rows = TestStepData.getRowCount(TestCaseID);
 				if(rows<2) { 
 					rows=2;
@@ -59,8 +60,23 @@ public class TestController extends Resources{
 					// loop through the test steps
 					System.out.println("SuiteData.getRowCount(TestCaseID)"+SuiteData.getRowCount(TestCaseID));
 					
-					System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//drivers//chromedriver_v2-37.exe");
-					driver = new ChromeDriver();
+					switch(Config.getProperty("Browser"))
+					{
+					case "Chrome":
+						System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//drivers//chromedriver_v2-37.exe");
+						driver = new ChromeDriver();
+						break;
+						
+					case "IE":
+						System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"//drivers//IEDriverServer.exe");
+						driver = new InternetExplorerDriver();
+						break;
+						
+					case "Firefox":
+						System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"//drivers//geckodriver.exe");
+						driver = new FirefoxDriver();
+					}
+					
 					//driver = new EventFiringWebDriver(dr);
 					driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 					driver.manage().window().maximize();
@@ -71,13 +87,9 @@ public class TestController extends Resources{
 						webElement = SuiteData.getCellData(TestCaseID, "WebElement", TS);
 						ProceedOnFail = SuiteData.getCellData(TestCaseID, "ProceedOnFail", TS);
 						TSID = SuiteData.getCellData(TestCaseID, "TSID", TS);
-						Description = SuiteData.getCellData(TestCaseID, "Description", TS);
-						
-						TestDataField = SuiteData.getCellData(TestCaseID, "TestDataField", TS);
-						
-						
-						TestData = TestStepData.getCellData(TestCaseID, TestDataField, TD);	
-						
+						Description = SuiteData.getCellData(TestCaseID, "Description", TS);						
+						TestDataField = SuiteData.getCellData(TestCaseID, "TestDataField", TS);				
+						TestData = TestStepData.getCellData(TestCaseID, TestDataField, TD);							
 												
 						Method method = Keywords.class.getMethod(keyword);	
 						TSStatus = (String) method.invoke(method);
@@ -103,8 +115,7 @@ public class TestController extends Resources{
 						/*
 						if(ProceedOnFail.equals("N")) {
 							break;
-						}*/
-						
+						}*/						
 						
 					}
 					ReportUtil.addTestCase(TestCaseID, startTime, TestUtils.now("dd.MMMM.yyyy hh.mm.ss aaa"), TCStatus);
@@ -131,6 +142,4 @@ public class TestController extends Resources{
 		if (driver!=null)
 		    driver.quit();
 	}
-	
-	
 }

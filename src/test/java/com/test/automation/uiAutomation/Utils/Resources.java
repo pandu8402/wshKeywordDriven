@@ -7,6 +7,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.test.automation.uiAutomation.Data.Xls_Reader;
@@ -16,8 +17,7 @@ import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
 public class Resources {
 	
 	
-	public static WebDriver dr;
-	public static ChromeDriver driver;
+	public static WebDriver driver;
 	public static Properties Repository = new Properties();
 	public static Properties Config = new Properties();
 	public static Properties AppText = new Properties();

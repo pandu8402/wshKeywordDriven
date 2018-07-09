@@ -16,11 +16,11 @@ public class ReportUtil {
 	public static double passNumber;
 	public static double failNumber;
 	public static boolean newTest = true;
-	public static ArrayList<String> description = new ArrayList<String>();;
-	public static ArrayList<String> keyword = new ArrayList<String>();;
-	public static ArrayList<String> teststatus = new ArrayList<String>();;
-	public static ArrayList<String> screenShotPath = new ArrayList<String>();;
-
+	public static ArrayList<String> description = new ArrayList<String>();
+	public static ArrayList<String> keyword = new ArrayList<String>();
+	public static ArrayList<String> teststatus = new ArrayList<String>();
+	public static ArrayList<String> screenShotPath = new ArrayList<String>();
+	
 	public static void startTesting(String filename, String testStartTime, String env, String rel) {
 		indexResultFilename = filename;
 		currentDir = indexResultFilename.substring(0, indexResultFilename.lastIndexOf("//"));
@@ -133,7 +133,6 @@ public class ReportUtil {
 		} catch (Exception e) {
 			System.err.println("Error: " + e.getMessage());
 		} finally {
-
 			fstream = null;
 			out = null;
 		}

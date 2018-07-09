@@ -19,8 +19,7 @@ import com.test.automation.uiAutomation.Utils.Resources;
 
 import com.google.common.base.Function;
 
-public class Keywords extends Resources{
-	
+public class Keywords extends Resources{	
 	
 	public static String Navigate() {
 		System.out.println("Navigate is called");
