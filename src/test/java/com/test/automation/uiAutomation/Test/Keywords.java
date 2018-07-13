@@ -12,6 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -189,7 +190,7 @@ public class Keywords extends Resources{
 		return "Pass";
 	}
 	
-		
+			
 	public static String clickWhenReady(By locator) {
 		WebElement element = null;
 		WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -198,8 +199,6 @@ public class Keywords extends Resources{
 		return "Pass";
 	}
 
-
-	
 	public static String waitFor() throws InterruptedException {
 		try {
 			Thread.sleep(5000);
@@ -209,8 +208,7 @@ public class Keywords extends Resources{
 		return "Pass";
 	}
 	
-	
-	public static String runAs() {
+	/*public static String runAs() {
 		System.out.println("Select Drop Down Item ="+ TestData);
 		try {
 			List<WebElement> items = getWebElements(webElement);
@@ -224,9 +222,86 @@ public class Keywords extends Resources{
 			return "Failed - Element not found "+webElement;
 		}
 		return "Pass";
+	}*/
+	
+		
+	public static String runAs() {
+		System.out.println("Select Drop Down Item ="+ TestData);
+		String[] ArrOfStr  =  TestData.split(",");
+		
+		try {
+			for(String s : ArrOfStr)
+			{
+				List<WebElement> items = getWebElements(webElement);
+				for(WebElement item : items)
+				{
+					if(item.getText().contains(s))
+						item.click();
+				}
+			}
+			
+		}catch (Throwable t) {
+			t.printStackTrace();
+			return "Failed - Element not found "+webElement;
+		}
+		return "Pass";
 	}
 	
 	
+	public static String verifyElementIsDisplayed() {
+		System.out.println("verify element is displayed");
+		try {
+			getWebElement(webElement).isDisplayed();
+		}catch (Throwable t) {
+			t.printStackTrace();
+			return "Failed - Element not found "+webElement;
+		}
+		return "Pass";
+	}
+	
+	
+	public static String verifyElementIsNotDisplayed() {
+		System.out.println("verify element is displayed");
+		try {
+			getWebElement(webElement).isDisplayed();
+		}catch (Throwable t) {
+			
+			return "Pass";
+		}
+		return "Failed - Element not found "+webElement;
+	}
+	
+	
+	public static String getAttributeValueNotContains()
+	   {
+		   System.out.println("getAttributeValueNotContains is called");
+			try {
+				String ActualText= getWebElement(webElement).getAttribute("value");
+				System.out.println(ActualText);
+				System.out.println("Actual text length =" + ActualText.length());
+				System.out.println("TestData text length =" + TestData.length());
+				if(ActualText.contains((TestData))) {
+					return "Failed - Actual text "+ActualText+" is not equal to to expected text "+TestData;
+				}
+			}catch (Throwable t) {
+				return "Failed - Element not found "+webElement;
+			}
+			return "Pass";
+	   }
+	
+	
+	public static String getStyleAttribute()
+	   {
+		   System.out.println("getstyleattribute is called");
+			try {
+				String ActualText= getWebElement(webElement).getAttribute("style");
+				System.out.println(ActualText);
+			}catch (Throwable t) {
+				return "Failed - Element not found "+webElement;
+			}
+			return "Pass";
+	   }
+		
 	public static void closeBrowser(){
 		driver.quit();
 	}

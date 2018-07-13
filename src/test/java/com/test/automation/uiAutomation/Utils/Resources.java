@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
-import com.test.automation.uiAutomation.Data.Xls_Reader;
+import com.test.automation.uiAutomation.ExcelReader.Xls_Reader;
 
 import net.sourceforge.htmlunit.corejs.javascript.tools.debugger.Main;
 

@@ -1,10 +1,10 @@
 package com.test.automation.uiAutomation.Test;
 
+import com.test.automation.uiAutomation.ExcelReader.*;
 import com.test.automation.uiAutomation.ReportUtils.ReportUtil;
 import com.test.automation.uiAutomation.Test.Keywords;
 import com.test.automation.uiAutomation.Utils.Resources;
 import com.test.automation.uiAutomation.Utils.TestUtils;
-import com.test.automation.uiAutomation.Data.*;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -78,7 +78,7 @@ public class TestController extends Resources{
 					}
 					
 					//driver = new EventFiringWebDriver(dr);
-					driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+					driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 					driver.manage().window().maximize();
 					
 					for(int TS=2;TS<=SuiteData.getRowCount(TestCaseID);TS++) {

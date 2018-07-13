@@ -1,4 +1,4 @@
-package com.test.automation.uiAutomation.Data;
+package com.test.automation.uiAutomation.ExcelReader;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
