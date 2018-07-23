@@ -191,11 +191,44 @@ public class Keywords extends Resources{
 	}
 	
 			
-	public static String clickWhenReady(By locator) {
+	public static String clickWhenReady() throws Exception {
+		 String[] split = Repository.getProperty(webElement).split(":");
+		 String locatorType = split[0];
+		 String locatorValue = split[1];
+		 By by = null;
+		 
+		 if (locatorType.toLowerCase().equals("id"))
+				by = By.id(locatorValue);
+			else if (locatorType.toLowerCase().equals("name"))
+				by = By.name(locatorValue);
+			else if ((locatorType.toLowerCase().equals("classname"))
+					|| (locatorType.toLowerCase().equals("class")))
+				by = By.className(locatorValue);
+			else if ((locatorType.toLowerCase().equals("tagname"))
+					|| (locatorType.toLowerCase().equals("tag")))
+				by =  By.className(locatorValue);
+			else if ((locatorType.toLowerCase().equals("linktext"))
+					|| (locatorType.toLowerCase().equals("link")))
+				by = By.linkText(locatorValue);
+			else if (locatorType.toLowerCase().equals("partiallinktext"))
+				by =  By.partialLinkText(locatorValue);
+			else if ((locatorType.toLowerCase().equals("cssselector"))
+					|| (locatorType.toLowerCase().equals("css")))
+				by = By.cssSelector(locatorValue);
+			else if (locatorType.toLowerCase().equals("xpath"))
+				by = By.xpath(locatorValue);
+			else 
+				throw new Exception("Unknown locator type '" + locatorType + "'");
+		 
 		WebElement element = null;
 		WebDriverWait wait = new WebDriverWait(driver, 30);
-		element = wait.until(ExpectedConditions.elementToBeClickable(locator));
-		element.click();
+		element = wait.until(ExpectedConditions.elementToBeClickable(by));
+		try{
+			element.click();
+		}catch(Throwable t){
+			return "Failed - Element not found "+webElement;
+		}
+		
 		return "Pass";
 	}
 
@@ -290,12 +323,46 @@ public class Keywords extends Resources{
 	   }
 	
 	
+	public static String waitForPageReadyState()
+	{
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+
+		for(int i=1;i<=5;i++)
+		{
+			try{
+			   Thread.sleep(1000);
+			}
+			catch(InterruptedException e){}
+			
+			if (js.executeScript("return document.readyState").toString().equals("complete"))
+			{ 
+			   System.out.println("Page Is loaded.");
+			   break; 
+			} 
+		}
+		
+		return "Pass";
+	}
+	
+	
 	public static String getStyleAttribute()
 	   {
 		   System.out.println("getstyleattribute is called");
 			try {
 				String ActualText= getWebElement(webElement).getAttribute("style");
 				System.out.println(ActualText);
+			}catch (Throwable t) {
+				return "Failed - Element not found "+webElement;
+			}
+			return "Pass";
+	   }
+	
+	
+	public static String swithToActiveElement()
+	   {
+		   System.out.println("Swith to active element is called");
+			try {
+				driver.switchTo().activeElement();
 			}catch (Throwable t) {
 				return "Failed - Element not found "+webElement;
 			}
