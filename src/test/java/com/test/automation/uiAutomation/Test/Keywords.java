@@ -296,12 +296,15 @@ public class Keywords extends Resources{
 	public static String verifyElementIsNotDisplayed() {
 		System.out.println("verify element is displayed");
 		try {
-			getWebElement(webElement).isDisplayed();
+			if(!getWebElement(webElement).isDisplayed())
+			{
+				return "Pass";
+			}
 		}catch (Throwable t) {
 			
 			return "Pass";
 		}
-		return "Failed - Element not found "+webElement;
+		return "Failed - Element found "+webElement;
 	}
 	
 	
@@ -359,16 +362,45 @@ public class Keywords extends Resources{
 	
 	
 	public static String swithToActiveElement()
-	   {
-		   System.out.println("Swith to active element is called");
-			try {
-				driver.switchTo().activeElement();
-			}catch (Throwable t) {
-				return "Failed - Element not found "+webElement;
-			}
-			return "Pass";
-	   }
+	{
+	  System.out.println("Swith to active element is called");
+	  try {
+		  driver.switchTo().activeElement();
+		}catch (Throwable t) {
+			return "Failed - Element not found "+webElement;
+		}
+		 return "Pass";
+	 }
+	
+	
+	public static String manageWidgets()
+	{
+		System.out.println("Manage widgets called ="+ TestData);
+		String[] ArrOfStr  =  TestData.split(",");
 		
+		try {
+			for(String s : ArrOfStr)
+			{
+				List<WebElement> items = getWebElements(webElement);
+				for(WebElement item : items)
+				{
+					if(item.getText().contains(s))
+					{
+					   item.findElement(By.className("dx-switch-container")).click();
+					}
+						
+				}
+			}
+			
+		}catch (Throwable t) {
+			t.printStackTrace();
+			return "Failed - Element not found "+webElement;
+		}
+	    
+		return "Pass";
+	}
+		
+	
 	public static void closeBrowser(){
 		driver.quit();
 	}

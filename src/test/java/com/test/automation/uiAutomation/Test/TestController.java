@@ -82,7 +82,6 @@ public class TestController extends Resources{
 					driver.manage().window().maximize();
 					
 					for(int TS=2;TS<=SuiteData.getRowCount(TestCaseID);TS++) {
-						
 						keyword = SuiteData.getCellData(TestCaseID, "Keyword", TS);
 						webElement = SuiteData.getCellData(TestCaseID, "WebElement", TS);
 						ProceedOnFail = SuiteData.getCellData(TestCaseID, "ProceedOnFail", TS);
