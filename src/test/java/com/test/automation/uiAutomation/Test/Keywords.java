@@ -392,7 +392,6 @@ public class Keywords extends Resources{
 						
 				}
 			}
-			
 		}catch (Throwable t) {
 			t.printStackTrace();
 			return "Failed - Element not found "+webElement;
@@ -401,6 +400,23 @@ public class Keywords extends Resources{
 		return "Pass";
 	}
 		
+	
+	public static String dragAndDrop()
+	{
+		System.out.println("Drag and Drop called");
+		String[] ArrOfStr  =  TestData.split(",");
+		
+		try{
+			WebElement Source = getWebElement(ArrOfStr[0]);
+			WebElement Target = getWebElement(ArrOfStr[1]);
+			Actions act = new Actions(driver);
+			act.dragAndDrop(Source, Target).build().perform();			
+		}catch(Throwable t){
+			
+		}
+		
+		return "";
+	}
 	
 	public static void closeBrowser(){
 		driver.quit();
