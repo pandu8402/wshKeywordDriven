@@ -284,12 +284,13 @@ public class Keywords extends Resources{
 	public static String verifyElementIsDisplayed() {
 		System.out.println("verify element is displayed");
 		try {
-			getWebElement(webElement).isDisplayed();
+			if(getWebElement(webElement).isDisplayed())
+			    return "Pass";
 		}catch (Throwable t) {
 			t.printStackTrace();
 			return "Failed - Element not found "+webElement;
 		}
-		return "Pass";
+		return "Failed - Element not found "+webElement;
 	}
 	
 	
