@@ -412,7 +412,8 @@ public class Keywords extends Resources{
 			Actions act = new Actions(driver);
 			act.dragAndDrop(Source, Target).build().perform();			
 		}catch(Throwable t){
-			
+			t.printStackTrace();
+			return "Failed - Element not found "+webElement;
 		}
 		
 		return "";
