@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Regression" duration-ms="346391" started-at="2018-08-06T13:21:24Z" finished-at="2018-08-06T13:27:11Z">
+  <suite name="Regression" duration-ms="133087" started-at="2018-09-03T14:09:38Z" finished-at="2018-09-03T14:11:51Z">
     <groups>
     </groups>
-    <test name="TestNG Test Group" duration-ms="346391" started-at="2018-08-06T13:21:24Z" finished-at="2018-08-06T13:27:11Z">
+    <test name="TestNG Test Group" duration-ms="133087" started-at="2018-09-03T14:09:38Z" finished-at="2018-09-03T14:11:51Z">
       <class name="com.test.automation.uiAutomation.Test.TestController">
-        <test-method status="PASS" signature="initBrowser()[pri:0, instance:com.test.automation.uiAutomation.Test.TestController@41e36e46]" name="initBrowser" is-config="true" duration-ms="2014" started-at="2018-08-06T09:21:24Z" finished-at="2018-08-06T09:21:26Z">
+        <test-method status="PASS" signature="initBrowser()[pri:0, instance:com.test.automation.uiAutomation.Test.TestController@343f4d3d]" name="initBrowser" is-config="true" duration-ms="1503" started-at="2018-09-03T10:09:38Z" finished-at="2018-09-03T10:09:39Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initBrowser -->
-        <test-method status="PASS" signature="TestCaseController()[pri:0, instance:com.test.automation.uiAutomation.Test.TestController@41e36e46]" name="TestCaseController" duration-ms="344331" started-at="2018-08-06T09:21:26Z" finished-at="2018-08-06T09:27:11Z">
+        <test-method status="PASS" signature="TestCaseController()[pri:0, instance:com.test.automation.uiAutomation.Test.TestController@343f4d3d]" name="TestCaseController" duration-ms="131537" started-at="2018-09-03T10:09:39Z" finished-at="2018-09-03T10:11:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestCaseController -->
-        <test-method status="PASS" signature="quitBrowser()[pri:0, instance:com.test.automation.uiAutomation.Test.TestController@41e36e46]" name="quitBrowser" is-config="true" duration-ms="1" started-at="2018-08-06T09:27:11Z" finished-at="2018-08-06T09:27:11Z">
+        <test-method status="PASS" signature="quitBrowser()[pri:0, instance:com.test.automation.uiAutomation.Test.TestController@343f4d3d]" name="quitBrowser" is-config="true" duration-ms="1" started-at="2018-09-03T10:11:51Z" finished-at="2018-09-03T10:11:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quitBrowser -->

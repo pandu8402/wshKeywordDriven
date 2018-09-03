@@ -266,10 +266,12 @@ public class Keywords extends Resources{
 			for(String s : ArrOfStr)
 			{
 				List<WebElement> items = getWebElements(webElement);
+				System.out.println("View data as item = " + items.toString());
 				for(WebElement item : items)
 				{
 					if(item.getText().contains(s))
 						item.click();
+					Thread.sleep(5000);
 				}
 			}
 			
