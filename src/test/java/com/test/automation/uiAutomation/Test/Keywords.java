@@ -1,5 +1,10 @@
 package com.test.automation.uiAutomation.Test;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
@@ -16,11 +21,12 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.test.automation.uiAutomation.Utils.DBConnect;
 import com.test.automation.uiAutomation.Utils.Resources;
 
 import com.google.common.base.Function;
 
-public class Keywords extends Resources{	
+public class Keywords extends DBConnect{	
 	
 	public static String Navigate() {
 		System.out.println("Navigate is called");
@@ -391,7 +397,6 @@ public class Keywords extends Resources{
 					{
 					   item.findElement(By.className("dx-switch-container")).click();
 					}
-						
 				}
 			}
 		}catch (Throwable t) {
@@ -420,6 +425,7 @@ public class Keywords extends Resources{
 		
 		return "";
 	}
+	
 	
 	public static void closeBrowser(){
 		driver.quit();
